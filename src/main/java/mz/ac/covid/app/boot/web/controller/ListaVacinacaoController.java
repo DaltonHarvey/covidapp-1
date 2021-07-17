@@ -18,6 +18,7 @@ import mz.ac.covid.app.boot.domain.Instituicao;
 import mz.ac.covid.app.boot.domain.InstituicaoSala;
 import mz.ac.covid.app.boot.domain.ListaVacinacao;
 import mz.ac.covid.app.boot.domain.Sala;
+import mz.ac.covid.app.boot.repository.IFuncionarioRepository;
 import mz.ac.covid.app.boot.service.FuncionarioService;
 import mz.ac.covid.app.boot.service.InstituicaoSalaService;
 import mz.ac.covid.app.boot.service.InstituicaoService;
@@ -42,6 +43,9 @@ public class ListaVacinacaoController {
 
   @Autowired
   private InstituicaoSalaService instituicaoSalaService;
+
+  @Autowired
+  private IFuncionarioRepository iFuncionarioRepository;
 
   @GetMapping("cadastrar")
   public String cadastrar(ListaVacinacao listaVacinacao) {
@@ -162,5 +166,16 @@ public class ListaVacinacaoController {
     instituicaoSalaService.registar(instituicaoSala);
     atrr.addFlashAttribute("success", "Requisição feita com sucesso.");
     return "redirect:/vacinacoes/requisitar";
+  }
+
+  @RequestMapping("envioFaltosos")
+  public String envioInstituicao(@ModelAttribute("instNome") String instNome) {
+    System.out.println(instNome);
+
+    boolean isDone = iFuncionarioRepository.listaFuncionarios()
+
+    if (isDone)
+      return "success";
+    return "error";
   }
 }
