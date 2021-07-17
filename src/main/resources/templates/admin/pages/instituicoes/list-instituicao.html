@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>UJC | Cargos</title>
+        <title>COVID APP | Instituições</title>
 
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet"
@@ -30,12 +30,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Cargos da UJC</h1>
+                            <h1>Instituições</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                                <li class="breadcrumb-item active">Cargos</li>
+                                <li class="breadcrumb-item active">Instituições</li>
                             </ol>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Cargos Disponiveis</h3>
+                                    <h3 class="card-title">Instituições Disponiveis</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
@@ -57,16 +57,13 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Nome do Cargo</th>
-                                                <th>Departamento</th>
+                                                <th>Nome da Instituições</th>
                                                 <th>Accoes</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr th:each="c : ${cargos}">
-                                                <td th:text="${c.nome}"></td>
-                                                <td th:text="${c.departamento.nome}"></td>
-                                                <!-- <td th:text="${c.funcionario.nome}"></td> -->
+                                            <tr th:each="i : ${instituicoes}">
+                                                <td th:text="${i.nome}"></td>
                                                 <td class="project-actions text-right">
                                                     <a class="btn btn-primary btn-sm" href="#">
                                                         <i class="fas fa-folder">
@@ -74,13 +71,13 @@
                                                         Ver
                                                     </a>
                                                     <a class="btn btn-info btn-sm"
-                                                        th:href="@{/cargos/editar/{id} (id=${c.id})}">
+                                                        th:href="@{/instituicoes/editar/{id} (id=${i.id})}">
                                                         <i class="fas fa-pencil-alt">
                                                         </i>
                                                         Editar
                                                     </a>
 
-                                                    <button th:id="${#strings.concat('btn_cargos/apagar/', c.id)}"
+                                                    <button th:id="${#strings.concat('btn_instituicoes/apagar/', i.id)}"
                                                         type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                                                         data-target="#myModal">
                                                         <i class="fas fa-trash">
