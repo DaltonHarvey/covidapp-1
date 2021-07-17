@@ -4,17 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import mz.ac.covid.app.boot.domain.Cargo;
-import mz.ac.covid.app.boot.service.CargoService;
+import mz.ac.covid.app.boot.domain.Instituicao;
+import mz.ac.covid.app.boot.service.InstituicaoService;
 
 @Component
-public class StringToCargoConverter implements Converter<String, Cargo> {
+public class StringToCargoConverter implements Converter<String, Instituicao> {
 
     @Autowired
-    private CargoService service;
+    private InstituicaoService service;
 
     @Override
-    public Cargo convert(String source) {
+    public Instituicao convert(String source) {
         if (source.isEmpty()) {
 
             return null;

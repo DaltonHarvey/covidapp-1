@@ -16,9 +16,6 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 	@Autowired(required = false)
 	private FuncionarioDao dao;
 
-	@Autowired(required = false)
-	private CargoService cargoService;
-
 	@Override
 	public void registar(Funcionario funcionario) {
 		dao.save(funcionario);
@@ -48,12 +45,12 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 		return dao.findAll();
 	}
 
-	@Override
-	public boolean funcionariosTemCargo(Long id) {
-		if (cargoService.cargoTemFuncionarios(id)) {
-			return false;
-		}
-		return true;
-	}
+	// @Override
+	// public boolean funcionariosTemCargo(Long id) {
+	// if (cargoService.cargoTemFuncionarios(id)) {
+	// return false;
+	// }
+	// return true;
+	// }
 
 }

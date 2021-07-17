@@ -12,19 +12,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import mz.ac.covid.app.boot.domain.Cargo;
+import mz.ac.covid.app.boot.domain.Instituicao;
 import mz.ac.covid.app.boot.domain.Departamento;
 import mz.ac.covid.app.boot.domain.Funcionario;
-import mz.ac.covid.app.boot.service.CargoService;
+import mz.ac.covid.app.boot.service.InstituicaoService;
 import mz.ac.covid.app.boot.service.DepartamentoService;
 import mz.ac.covid.app.boot.service.FuncionarioService;
 
 @Controller
-@RequestMapping("/cargos")
-public class CargoController {
+@RequestMapping("/instituicoes")
+public class InstituicaoController {
 
 	@Autowired
-	private CargoService cargoService;
+	private InstituicaoService cargoService;
 	@Autowired
 	private DepartamentoService departamentoService;
 
@@ -32,7 +32,7 @@ public class CargoController {
 	private FuncionarioService funcionarioService;
 
 	@GetMapping("cadastrar")
-	public String cadastrar(Cargo cargo) {
+	public String cadastrar(Instituicao cargo) {
 
 		return "/admin/pages/cargos/add-cargo";
 	}
@@ -59,7 +59,7 @@ public class CargoController {
 	}
 
 	@PostMapping("editar")
-	public String actualizar(Cargo cargo, RedirectAttributes atrr) {
+	public String actualizar(Instituicao cargo, RedirectAttributes atrr) {
 		cargoService.editar(cargo);
 		atrr.addFlashAttribute("success", "Cargo actualizado com sucesso.");
 		return "redirect:/cargos/listar";
@@ -76,13 +76,8 @@ public class CargoController {
 	@GetMapping("apagar/{id}")
 	public String apagar(@PathVariable("id") Long id, ModelMap model) {
 
-		if (cargoService.cargoTemFuncionarios(id)) {
-			model.addAttribute("fail", "Cargo nao pode ser removido. Possui Funcionario(s) Vinculado(s) a ele.");
-		} else {
-			cargoService.apagar(id);
-			model.addAttribute("success", "Cargo removido com sucesso.");
-
-		}
+		cargoService.apagar(id);
+		model.addAttribute("success", "Cargo removido com sucesso.");
 
 		return listar(model);
 	}
@@ -95,7 +90,7 @@ public class CargoController {
 	 * @return
 	 */
 	@PostMapping("gravar")
-	public String gravar(Cargo cargo, RedirectAttributes atrr) {
+	public String gravar(Instituicao cargo, RedirectAttributes atrr) {
 		cargoService.registar(cargo);
 		atrr.addFlashAttribute("success", "Cargo cadastrado com sucesso.");
 		return "redirect:/cargos/cadastrar";
