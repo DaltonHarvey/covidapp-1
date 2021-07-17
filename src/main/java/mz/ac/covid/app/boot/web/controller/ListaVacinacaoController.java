@@ -15,9 +15,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import mz.ac.covid.app.boot.domain.Funcionario;
 import mz.ac.covid.app.boot.domain.Instituicao;
+import mz.ac.covid.app.boot.domain.InstituicaoSala;
 import mz.ac.covid.app.boot.domain.ListaVacinacao;
 import mz.ac.covid.app.boot.domain.Sala;
 import mz.ac.covid.app.boot.service.FuncionarioService;
+import mz.ac.covid.app.boot.service.InstituicaoSalaService;
 import mz.ac.covid.app.boot.service.InstituicaoService;
 import mz.ac.covid.app.boot.service.ListaVacinacaoService;
 import mz.ac.covid.app.boot.service.SalaService;
@@ -37,6 +39,9 @@ public class ListaVacinacaoController {
 
   @Autowired
   private SalaService salaService;
+
+  @Autowired
+  private InstituicaoSalaService instituicaoSalaService;
 
   @GetMapping("cadastrar")
   public String cadastrar(ListaVacinacao listaVacinacao) {
@@ -136,4 +141,26 @@ public class ListaVacinacaoController {
     return funcionarioService.pesquisarTodos();
   }
 
+  // SECCAO DE MARCACAO DE SALAS
+
+  @GetMapping("requisitar")
+  public String requisitar(InstituicaoSala instituicaoSala) {
+
+    return "/admin/pages/lista-vacinacoes/requi-sala";
+  }
+
+  /**
+   * metodo para fazer o registo de Requisicao de salas com recurso ao formulario
+   * de cadastro no redir
+   * 
+   * @param instituicaoSala
+   * @param atrr
+   * @return
+   */
+  @PostMapping("requisicoes")
+  public String requisitar(InstituicaoSala instituicaoSala, RedirectAttributes atrr) {
+    instituicaoSalaService.registar(instituicaoSala);
+    atrr.addFlashAttribute("success", "Requisição feita com sucesso.");
+    return "redirect:/vacinacoes/requisitar";
+  }
 }
