@@ -35,7 +35,7 @@ public class Funcionario extends AbstractEntity<Long> {
 	@JoinColumn(name = "instituicao_id_fk")
 	private Instituicao instituicao;
 
-	@OneToMany
+	@OneToMany(mappedBy = "funcionario")
 	private List<Telefone> telefones;
 
 	@Column(name = "email")

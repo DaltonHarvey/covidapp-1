@@ -89,6 +89,11 @@
                           </select>
                         </div>
                         <div class="form-group">
+                          <label>Nacionalidade</label>
+                          <input type="text" class="form-control select2" style="width: 100%;" id="exampleInputText"
+                            placeholder="Informe a nacionalidade" th:field="*{nacionalidade}">
+                        </div>
+                        <div class="form-group">
                           <label>Cidade</label>
                           <input type="text" class="form-control" id="exampleInputText" placeholder="Ex: Maputo"
                             th:field="*{endereco.cidade}">
@@ -100,7 +105,7 @@
                         </div>
                         <div class="form-group">
                           <label>Numero da Casa</label>
-                          <input type="text" class="form-control" id="exampleInputText" placeholder="Ex:123"
+                          <input type="number" class="form-control" id="exampleInputText" placeholder="Ex:123"
                             th:field="*{endereco.numeroDeCasa}">
                         </div>
 
@@ -115,16 +120,17 @@
                         </div>
 
                         <div class="form-group">
-                          <label>Email do Funcionario</label>
-                          <input type="text" class="form-control select2" style="width: 100%;" id="exampleInputText"
+                          <label>E-mail</label>
+                          <input type="email" class="form-control select2" style="width: 100%;" id="exampleInputText"
                             placeholder="Informe um endereco Eletronico" th:field="*{email}">
                         </div>
 
-                        <div class="form-group">
-                          <label>Nacionalidade</label>
-                          <input type="text" class="form-control select2" style="width: 100%;" id="exampleInputText"
-                            placeholder="Informe a nacionalidade" th:field="*{nacionalidade}">
-                        </div>
+                        <!-- <div class="form-group">
+                          <label>Telefone</label>
+                          <input type="tel" class="form-control" id="exampleInputText" placeholder="Informe um contacto"
+                            th:field="*{telefones}">
+                        </div> -->
+
 
                         <div class="form-group">
                           <label>Departamento</label>
@@ -163,15 +169,15 @@
 
                   </div>
                   <div class="card-footer">
-                    <button type="submit" class="btn btn-primary" onclick=alerta()>Submeter</button>
+                    <button type="submit" class="btn btn-primary">Submeter</button>
                   </div>
                   <!-- /.row -->
                 </div>
-
+              </form>
             </div>
             <!-- /.card -->
 
-            </form>
+
 
           </div>
       </div>

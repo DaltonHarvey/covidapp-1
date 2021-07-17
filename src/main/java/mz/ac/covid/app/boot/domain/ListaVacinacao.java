@@ -1,11 +1,13 @@
 package mz.ac.covid.app.boot.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -17,76 +19,89 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 @Table(name = "LISTA_VACINACAO")
 public class ListaVacinacao extends AbstractEntity<Long> {
 
-    @ManyToOne
-    @JoinColumn(name = "instituicao_id_fk")
-    private Instituicao instituicao;
+  @ManyToOne
+  @JoinColumn(name = "instituicao_id_fk")
+  private Instituicao instituicao;
 
-    @ManyToOne
-    @JoinColumn(name = "funcionario_id_fk")
-    private Funcionario funcionario;
+  @ManyToOne
+  @JoinColumn(name = "funcionario_id_fk")
+  private Funcionario funcionario;
 
-    @ManyToOne
-    @JoinColumn(name = "intituicao_sala_id_fk")
-    private InstituicaoSala instituicaoSala;
+  @OneToMany(mappedBy = "departamento")
+  private List<Funcionario> funcionarios;
+  // @ManyToOne
+  // @JoinColumn(name = "intituicao_sala_id_fk")
+  // private InstituicaoSala instituicaoSala;
 
-    @DateTimeFormat(iso = ISO.DATE)
-    @Column(name = "data_inicio", nullable = false, columnDefinition = "DATE")
-    private Date data_inicio;
+  @ManyToOne
+  @JoinColumn(name = "sala_id_fk")
+  private Sala sala;
 
-    @DateTimeFormat(iso = ISO.DATE)
-    @Column(name = "data_termino", nullable = false, columnDefinition = "DATE")
-    private Date data_termino;
+  @DateTimeFormat(iso = ISO.DATE)
+  @Column(name = "data_inicio", nullable = false, columnDefinition = "DATE")
+  private Date data_inicio;
 
-    @Transient
-    private Sala sala;
+  @DateTimeFormat(iso = ISO.DATE)
+  @Column(name = "data_termino", nullable = false, columnDefinition = "DATE")
+  private Date data_termino;
 
-    public Instituicao getInstituicao() {
-      return instituicao;
-    }
+  // @Transient
+  // private Sala sala;
 
-    public void setInstituicao(Instituicao instituicao) {
-      this.instituicao = instituicao;
-    }
+  public Instituicao getInstituicao() {
+    return instituicao;
+  }
 
-    public Funcionario getFuncionario() {
-      return funcionario;
-    }
+  public void setInstituicao(Instituicao instituicao) {
+    this.instituicao = instituicao;
+  }
 
-    public void setFuncionario(Funcionario funcionario) {
-      this.funcionario = funcionario;
-    }
+  public Funcionario getFuncionario() {
+    return funcionario;
+  }
 
-    public InstituicaoSala getInstituicaoSala() {
-      return instituicaoSala;
-    }
+  public void setFuncionario(Funcionario funcionario) {
+    this.funcionario = funcionario;
+  }
 
-    public void setInstituicaoSala(InstituicaoSala instituicaoSala) {
-      this.instituicaoSala = instituicaoSala;
-    }
+  // public InstituicaoSala getInstituicaoSala() {
+  // return instituicaoSala;
+  // }
 
-    public Date getData_inicio() {
-      return data_inicio;
-    }
+  // public void setInstituicaoSala(InstituicaoSala instituicaoSala) {
+  // this.instituicaoSala = instituicaoSala;
+  // }
 
-    public void setData_inicio(Date data_inicio) {
-      this.data_inicio = data_inicio;
-    }
+  public Date getData_inicio() {
+    return data_inicio;
+  }
 
-    public Date getData_termino() {
-      return data_termino;
-    }
+  public void setData_inicio(Date data_inicio) {
+    this.data_inicio = data_inicio;
+  }
 
-    public void setData_termino(Date data_termino) {
-      this.data_termino = data_termino;
-    }
+  public Date getData_termino() {
+    return data_termino;
+  }
 
-    public Sala getSala() {
-      return sala;
-    }
+  public void setData_termino(Date data_termino) {
+    this.data_termino = data_termino;
+  }
 
-    public void setSala(Sala sala) {
-      this.sala = sala;
-    }
+  public Sala getSala() {
+    return sala;
+  }
 
-    
+  public void setSala(Sala sala) {
+    this.sala = sala;
+  }
+
+  // public Sala getSala() {
+  // return sala;
+  // }
+
+  // public void setSala(Sala sala) {
+  // this.sala = sala;
+  // }
+
 }
