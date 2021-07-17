@@ -93,7 +93,7 @@ public class InstituicaoController {
 	public String gravar(Instituicao instituicao, RedirectAttributes atrr) {
 		instituicaoService.registar(instituicao);
 		atrr.addFlashAttribute("success", "Instituicao cadastrada com sucesso.");
-		return "redirect:/cargos/cadastrar";
+		return "redirect:/instituicoes/cadastrar";
 	}
 
 	/**
