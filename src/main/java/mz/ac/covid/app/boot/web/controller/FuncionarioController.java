@@ -50,7 +50,6 @@ public class FuncionarioController {
     @GetMapping("editar/{id}")
     public String preActualizar(@PathVariable("id") Long id, ModelMap model) {
         model.addAttribute("funcionario", funcionarioService.pesquisarPorId(id));
-
         return "/admin/pages/funcionarios/add-func";
     }
 
@@ -76,18 +75,6 @@ public class FuncionarioController {
         model.addAttribute("success", "Funcionario removido com sucesso.");
 
         return listar(model);
-    }
-
-    @GetMapping("minhas")
-    public String requisicoesFunc() {
-
-        return "/admin/pages/funcionarios/list-requi";
-    }
-
-    @GetMapping("requisitar")
-    public String requisitar() {
-
-        return "/admin/pages/funcionarios/add-requi";
     }
 
     /**

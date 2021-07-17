@@ -24,7 +24,7 @@ import mz.ac.covid.app.boot.service.FuncionarioService;
 public class InstituicaoController {
 
 	@Autowired
-	private InstituicaoService cargoService;
+	private InstituicaoService instituicaoService;
 	@Autowired
 	private DepartamentoService departamentoService;
 
@@ -32,15 +32,15 @@ public class InstituicaoController {
 	private FuncionarioService funcionarioService;
 
 	@GetMapping("cadastrar")
-	public String cadastrar(Instituicao cargo) {
+	public String cadastrar(Instituicao instituicao) {
 
-		return "/admin/pages/cargos/add-cargo";
+		return "/admin/pages/instituicoes/add-instituicao";
 	}
 
 	@GetMapping("listar")
 	public String listar(ModelMap model) {
-		model.addAttribute("cargos", cargoService.pesquisarTodos());
-		return "/admin/pages/cargos/list-cargo";
+		model.addAttribute("instituicoes", instituicaoService.pesquisarTodos());
+		return "/admin/pages/instituicoes/list-instituicao";
 	}
 
 	/**
@@ -53,16 +53,16 @@ public class InstituicaoController {
 	 */
 	@GetMapping("editar/{id}")
 	public String preActualizar(@PathVariable("id") Long id, ModelMap model) {
-		model.addAttribute("cargo", cargoService.pesquisarPorId(id));
+		model.addAttribute("instituicao", instituicaoService.pesquisarPorId(id));
 
-		return "/admin/pages/cargos/add-cargo";
+		return "/admin/pages/instituicoes/add-instituicao";
 	}
 
 	@PostMapping("editar")
-	public String actualizar(Instituicao cargo, RedirectAttributes atrr) {
-		cargoService.editar(cargo);
-		atrr.addFlashAttribute("success", "Cargo actualizado com sucesso.");
-		return "redirect:/cargos/listar";
+	public String actualizar(Instituicao instituicao, RedirectAttributes atrr) {
+		instituicaoService.editar(instituicao);
+		atrr.addFlashAttribute("success", "instituicao actualizada com sucesso.");
+		return "redirect:/instituicoes/listar";
 	}
 
 	/**
@@ -76,8 +76,8 @@ public class InstituicaoController {
 	@GetMapping("apagar/{id}")
 	public String apagar(@PathVariable("id") Long id, ModelMap model) {
 
-		cargoService.apagar(id);
-		model.addAttribute("success", "Cargo removido com sucesso.");
+		instituicaoService.apagar(id);
+		model.addAttribute("success", "Instituicao removida com sucesso.");
 
 		return listar(model);
 	}
@@ -90,9 +90,9 @@ public class InstituicaoController {
 	 * @return
 	 */
 	@PostMapping("gravar")
-	public String gravar(Instituicao cargo, RedirectAttributes atrr) {
-		cargoService.registar(cargo);
-		atrr.addFlashAttribute("success", "Cargo cadastrado com sucesso.");
+	public String gravar(Instituicao instituicao, RedirectAttributes atrr) {
+		instituicaoService.registar(instituicao);
+		atrr.addFlashAttribute("success", "Instituicao cadastrada com sucesso.");
 		return "redirect:/cargos/cadastrar";
 	}
 
