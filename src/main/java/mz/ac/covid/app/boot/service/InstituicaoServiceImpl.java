@@ -45,19 +45,4 @@ public class InstituicaoServiceImpl implements InstituicaoService {
 		return dao.findAll();
 	}
 
-	// @Override
-	// public boolean cargoTemFuncionarios(Long id) {
-	// // TODO Auto-generated method stub
-	// return false;
-	// }
-
-	// @Override
-	// public boolean TemFuncionarios(Long id) {
-
-	// if (pesquisarPorId(id).getFuncionarios().isEmpty()) {
-	// return false;
-	// }
-	// return true;
-	// }
-
 }

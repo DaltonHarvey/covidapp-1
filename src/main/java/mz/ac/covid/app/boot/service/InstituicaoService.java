@@ -16,5 +16,4 @@ public interface InstituicaoService {
 
 	List<Instituicao> pesquisarTodos();
 
-	// boolean cargoTemFuncionarios(Long id);
 }

@@ -18,33 +18,28 @@ public class TelefoneServiceImpl implements TelefoneService {
 
 	@Override
 	public void salvar(Telefone telefone) {
-		// TODO Auto-generated method stub
 		dao.save(telefone);
 	}
 
 	@Override
 	public void editar(Telefone telefone) {
-		// TODO Auto-generated method stub
 		dao.update(telefone);
 	}
 
 	@Override
 	public void excluir(Long id) {
-		// TODO Auto-generated method stub
 		dao.delete(id);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public Telefone buscarPorId(Long id) {
-		// TODO Auto-generated method stub
 		return dao.findById(id);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Telefone> buscarTodos() {
-		// TODO Auto-generated method stub
 		return dao.findAll();
 	}
 

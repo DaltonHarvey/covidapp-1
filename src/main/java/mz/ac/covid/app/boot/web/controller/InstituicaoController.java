@@ -25,6 +25,7 @@ public class InstituicaoController {
 
 	@Autowired
 	private InstituicaoService instituicaoService;
+
 	@Autowired
 	private DepartamentoService departamentoService;
 
@@ -44,7 +45,7 @@ public class InstituicaoController {
 	}
 
 	/**
-	 * Metodo de pre actualizacao de registo de cargos com recurso ao metodo
+	 * Metodo de pre actualizacao de registo de instituicoes com recurso ao metodo
 	 * actualizar que faz o redirecionamento
 	 * 
 	 * @param id
@@ -66,7 +67,7 @@ public class InstituicaoController {
 	}
 
 	/**
-	 * Metodo que permite excluir um departamento com base no seu id e somente se
+	 * Metodo que permite excluir um instituicoes com base no seu id e somente se
 	 * ele nao tiver cargos vinculados a ele
 	 * 
 	 * @param id
@@ -83,8 +84,8 @@ public class InstituicaoController {
 	}
 
 	/**
-	 * metodo para fazer o registo de cargos com recurso ao formulario de cadastro
-	 * no redir
+	 * metodo para fazer o registo de instituicoes com recurso ao formulario de
+	 * cadastro no redir
 	 * 
 	 * @param departamento
 	 * @return
