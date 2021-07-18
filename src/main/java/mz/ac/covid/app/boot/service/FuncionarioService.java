@@ -16,5 +16,5 @@ public interface FuncionarioService {
 
 	List<Funcionario> pesquisarTodos();
 
-	boolean funcionariosTemCargo(Long id);
+	// boolean funcionariosTemCargo(Long id);
 }
