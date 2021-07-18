@@ -60,14 +60,13 @@
                                                 <tr>
 
                                                     <th>Nome do Departamento</th>
-                                                    <th>Faculdade</th>
+                                                   
                                                     <th>Acções</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr th:each="d : ${departamentos}">
                                                     <td th:text="${d.nome}"></td>
-                                                    <td th:text="${d.faculdade.descricao}"></td>
 
 
                                                     <td class="project-actions text-right">
