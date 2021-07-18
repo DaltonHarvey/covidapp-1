@@ -4,7 +4,7 @@ import java.util.List;
 
 import mz.ac.covid.app.boot.domain.ListaVacinacao;
 
-public interface LIstaVacinacaoDao {
+public interface ListaVacinacaoDao {
 
     void save(ListaVacinacao listaVacinacao);
 

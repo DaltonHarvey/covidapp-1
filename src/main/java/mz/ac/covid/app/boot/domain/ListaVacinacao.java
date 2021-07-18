@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -35,4 +36,57 @@ public class ListaVacinacao extends AbstractEntity<Long> {
     @DateTimeFormat(iso = ISO.DATE)
     @Column(name = "data_termino", nullable = false, columnDefinition = "DATE")
     private Date data_termino;
+
+    @Transient
+    private Sala sala;
+
+    public Instituicao getInstituicao() {
+      return instituicao;
+    }
+
+    public void setInstituicao(Instituicao instituicao) {
+      this.instituicao = instituicao;
+    }
+
+    public Funcionario getFuncionario() {
+      return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+      this.funcionario = funcionario;
+    }
+
+    public InstituicaoSala getInstituicaoSala() {
+      return instituicaoSala;
+    }
+
+    public void setInstituicaoSala(InstituicaoSala instituicaoSala) {
+      this.instituicaoSala = instituicaoSala;
+    }
+
+    public Date getData_inicio() {
+      return data_inicio;
+    }
+
+    public void setData_inicio(Date data_inicio) {
+      this.data_inicio = data_inicio;
+    }
+
+    public Date getData_termino() {
+      return data_termino;
+    }
+
+    public void setData_termino(Date data_termino) {
+      this.data_termino = data_termino;
+    }
+
+    public Sala getSala() {
+      return sala;
+    }
+
+    public void setSala(Sala sala) {
+      this.sala = sala;
+    }
+
+    
 }
