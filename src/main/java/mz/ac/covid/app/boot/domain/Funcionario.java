@@ -1,7 +1,7 @@
 package mz.ac.covid.app.boot.domain;
 
-import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -16,17 +16,12 @@ public class Funcionario extends AbstractEntity<Long> {
 	@Column(nullable = false)
 	private String nome;
 
+	@Column(nullable = false)
+	private String nacionalidade;
+
 	@DateTimeFormat(iso = ISO.DATE)
 	@Column(name = "data_nascimento", nullable = false, columnDefinition = "DATE")
 	private Date data_nasc;
-
-	@DateTimeFormat(iso = ISO.DATE)
-	@Column(name = "data_entrada", nullable = false, columnDefinition = "DATE")
-	private Date dataEntrada;
-
-	@DateTimeFormat(iso = ISO.DATE)
-	@Column(name = "data_saida", columnDefinition = "DATE")
-	private LocalDate dataSaida;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "endereco_id_fk", nullable = false)
@@ -37,16 +32,14 @@ public class Funcionario extends AbstractEntity<Long> {
 	private Departamento departamento;
 
 	@ManyToOne
-	@JoinColumn(name = "tipo_id_fk", nullable = false)
-	private Tipo tipo;
+	@JoinColumn(name = "instituicao_id_fk")
+	private Instituicao instituicao;
 
-	@ManyToOne
-	@JoinColumn(name = "nivelAcademico_id_fk", nullable = false)
-	private NivelAcademico nivelAcademico;
+	@OneToMany(mappedBy = "funcionario")
+	private List<Telefone> telefones;
 
-	@OneToOne
-	@JoinColumn(name = "cargo_id_fk")
-	private Cargo cargo;
+	@Column(name = "email")
+	private String email;
 
 	public String getNome() {
 		return nome;
@@ -62,22 +55,6 @@ public class Funcionario extends AbstractEntity<Long> {
 
 	public void setData_nasc(Date data_nasc) {
 		this.data_nasc = data_nasc;
-	}
-
-	public Date getDataEntrada() {
-		return dataEntrada;
-	}
-
-	public void setDataEntrada(Date dataEntrada) {
-		this.dataEntrada = dataEntrada;
-	}
-
-	public LocalDate getDataSaida() {
-		return dataSaida;
-	}
-
-	public void setDataSaida(LocalDate dataSaida) {
-		this.dataSaida = dataSaida;
 	}
 
 	public Endereco getEndereco() {
@@ -96,28 +73,36 @@ public class Funcionario extends AbstractEntity<Long> {
 		this.departamento = departamento;
 	}
 
-	public Tipo getTipo() {
-		return tipo;
+	public String getNacionalidade() {
+		return nacionalidade;
 	}
 
-	public void setTipo(Tipo tipo) {
-		this.tipo = tipo;
+	public void setNacionalidade(String nacionalidade) {
+		this.nacionalidade = nacionalidade;
 	}
 
-	public NivelAcademico getNivelAcademico() {
-		return nivelAcademico;
+	public Instituicao getInstituicao() {
+		return instituicao;
 	}
 
-	public void setNivelAcademico(NivelAcademico nivelAcademico) {
-		this.nivelAcademico = nivelAcademico;
+	public void setInstituicao(Instituicao instituicao) {
+		this.instituicao = instituicao;
 	}
 
-	public Cargo getCargo() {
-		return cargo;
+	public List<Telefone> getTelefones() {
+		return telefones;
 	}
 
-	public void setCargo(Cargo cargo) {
-		this.cargo = cargo;
+	public void setTelefones(List<Telefone> telefones) {
+		this.telefones = telefones;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

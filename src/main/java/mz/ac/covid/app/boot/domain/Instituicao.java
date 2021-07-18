@@ -1,0 +1,34 @@
+package mz.ac.covid.app.boot.domain;
+
+import java.util.List;
+
+import javax.persistence.*;
+
+@SuppressWarnings("serial")
+@Entity
+@Table(name = "INSTITUICAO")
+public class Instituicao extends AbstractEntity<Long> {
+
+	@Column(name = "nome", nullable = false, unique = true, length = 60)
+	private String nome;
+
+	@OneToMany(mappedBy = "instituicao")
+	private List<Funcionario> funcionarios;
+
+	public List<Funcionario> getFuncionarios() {
+		return funcionarios;
+	}
+
+	public void setFuncionarios(List<Funcionario> funcionarios) {
+		this.funcionarios = funcionarios;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+}
