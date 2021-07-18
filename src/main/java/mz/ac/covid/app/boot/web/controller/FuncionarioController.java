@@ -1,15 +1,20 @@
 package mz.ac.covid.app.boot.web.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import mz.ac.covid.app.boot.domain.Departamento;
 import mz.ac.covid.app.boot.domain.Funcionario;
+import mz.ac.covid.app.boot.domain.Instituicao;
 import mz.ac.covid.app.boot.service.InstituicaoService;
 import mz.ac.covid.app.boot.service.DepartamentoService;
 import mz.ac.covid.app.boot.service.FuncionarioService;
@@ -50,7 +55,6 @@ public class FuncionarioController {
     @GetMapping("editar/{id}")
     public String preActualizar(@PathVariable("id") Long id, ModelMap model) {
         model.addAttribute("funcionario", funcionarioService.pesquisarPorId(id));
-
         return "/admin/pages/funcionarios/add-func";
     }
 
@@ -78,21 +82,9 @@ public class FuncionarioController {
         return listar(model);
     }
 
-    @GetMapping("minhas")
-    public String requisicoesFunc() {
-
-        return "/admin/pages/funcionarios/list-requi";
-    }
-
-    @GetMapping("requisitar")
-    public String requisitar() {
-
-        return "/admin/pages/funcionarios/add-requi";
-    }
-
     /**
-     * metodo para fazer o registo de cargos com recurso ao formulario de cadastro
-     * no redir
+     * metodo para fazer o registo de funcionarios com recurso ao formulario de
+     * cadastro no redir
      * 
      * @param departamento
      * @return
@@ -104,4 +96,25 @@ public class FuncionarioController {
         return "redirect:/funcionarios/cadastrar";
     }
 
+    /**
+     * Metodo para listar todos os instituicoes e mostrar na combobox presente no
+     * formulario
+     * 
+     * @return
+     */
+    @ModelAttribute("instituicoes")
+    public List<Instituicao> listaInstituicoes() {
+        return instituicaoService.pesquisarTodos();
+    }
+
+    /**
+     * Metodo para listar todos os departamentos e mostrar na combobox presente no
+     * formulario
+     * 
+     * @return
+     */
+    @ModelAttribute("departamentos")
+    public List<Departamento> listaDepartamentos() {
+        return departamentoService.pesquisarTodos();
+    }
 }

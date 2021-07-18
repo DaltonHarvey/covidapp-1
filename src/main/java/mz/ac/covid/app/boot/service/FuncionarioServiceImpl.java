@@ -45,12 +45,4 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 		return dao.findAll();
 	}
 
-	// @Override
-	// public boolean funcionariosTemCargo(Long id) {
-	// if (cargoService.cargoTemFuncionarios(id)) {
-	// return false;
-	// }
-	// return true;
-	// }
-
 }

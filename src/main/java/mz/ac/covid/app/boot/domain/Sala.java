@@ -15,4 +15,20 @@ public class Sala extends AbstractEntity<Long> {
     @Column(name = "lotacao")
     private Integer lotacao;
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Integer getLotacao() {
+        return lotacao;
+    }
+
+    public void setLotacao(Integer lotacao) {
+        this.lotacao = lotacao;
+    }
+
 }
