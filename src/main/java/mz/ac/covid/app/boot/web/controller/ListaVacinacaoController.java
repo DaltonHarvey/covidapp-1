@@ -146,7 +146,7 @@ public class ListaVacinacaoController {
   @GetMapping("requisitar")
   public String requisitar(InstituicaoSala instituicaoSala) {
 
-    return "/admin/pages/lista-vacinacoes/requi-sala";
+    return "/admin/pages/lista-vacinacoes/add-requisitar-sala";
   }
 
   /**

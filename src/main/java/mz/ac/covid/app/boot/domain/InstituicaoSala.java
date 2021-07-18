@@ -48,4 +48,22 @@ public class InstituicaoSala extends AbstractEntity<Long> {
     this.sala = sala;
   }
 
+  public Date getData_inicio() {
+    return data_inicio;
+  }
+
+  public void setData_inicio(Date data_inicio) {
+    this.data_inicio = data_inicio;
+  }
+
+  public Date getData_termino() {
+    return data_termino;
+  }
+
+  public void setData_termino(Date data_termino) {
+    this.data_termino = data_termino;
+  }
+
+  
+
 }
