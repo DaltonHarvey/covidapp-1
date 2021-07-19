@@ -30,6 +30,15 @@
   <link rel="stylesheet" href="../../plugins/dropzone/min/dropzone.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+
+  <style>
+    .changeDisplay{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items:center
+    }
+  </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -62,12 +71,12 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Atribuição de Sala</h3>
+                <h3 class="card-title">Instituição com Requisição</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form th:action="${listaVacinacao.id == null} ? @{/vacinacoes/gravar} : @{/vacinacoes/editar}"
-                th:object="${listaVacinacao}" method="POST">
+              <form th:action="@{/vacinacoes/envioInstituicao}"
+                th:modelAttribute="${instituicaoId}" method="POST">
                 <div class="card-body">
 
                   <div class="form-group">
@@ -75,9 +84,43 @@
                     <select id="instituicao" class="form-control select2" style="width: 100%;"
                       th:field="*{instituicao}">
                       <option value="">Selecione</option>
-                      <option th:each="i : ${instituicoes}" th:value="${i.id}" th:text="${i.nome}">
+                      <option name="instituicaoId" th:each="i : ${instituicoes}" th:value="${i.id}" th:text="${i.nome}">
                     </select>
                   </div>
+
+                  <div class="form-group">
+                    <input type="hidden" name="id" th:field="*{id}">
+                  </div>
+                  
+
+                  <button type="submit" class="btn btn-primary">Pesquisar</button>
+                </div>
+                <!-- /.card-body -->
+
+
+
+                <!-- <div class="card-footer">
+                  
+                </div> -->
+              </form>
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.content-wrapper -->
+
+          <!-- left column -->
+
+          <div class="col-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Atribuição de Sala</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form th:action="${listaVacinacao.id == null} ? @{/vacinacoes/gravar} : @{/vacinacoes/editar}"
+                th:object="${listaVacinacao}" method="POST">
+                <div class="card-body">
 
                   <div class="form-group">
                     <label>Sala</label>
@@ -104,21 +147,19 @@
                 </div>
                 <!-- /.card-body -->
 
+
+
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Submeter</button>
                 </div>
               </form>
             </div>
             <!-- /.card -->
+
+
           </div>
-          <!-- /.content-wrapper -->
-
-          <!-- left column -->
-
 
         </div>
-
-      </div>
 
 
     </section>

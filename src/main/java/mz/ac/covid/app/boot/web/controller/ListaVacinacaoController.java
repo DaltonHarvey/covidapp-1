@@ -45,7 +45,7 @@ public class ListaVacinacaoController {
   private InstituicaoSalaService instituicaoSalaService;
 
   @Autowired
-  private IFuncionarioRepository iFuncionarioRepository;
+  private IFuncionarioRepository funcionarioRepository;
 
   @GetMapping("cadastrar")
   public String cadastrar(ListaVacinacao listaVacinacao) {
@@ -168,14 +168,14 @@ public class ListaVacinacaoController {
     return "redirect:/vacinacoes/requisitar";
   }
 
-  @RequestMapping("envioFaltosos")
-  public String envioInstituicao(@ModelAttribute("instNome") String instNome) {
-    System.out.println(instNome);
+  @RequestMapping("envioInstituicao")
+  public String envioInstituicao(@ModelAttribute("instituicaoId") Long instituicaoId) {
+    System.out.println(instituicaoId);
 
-    boolean isDone = iFuncionarioRepository.listaFuncionarios()
+    List<Funcionario> funcionarios = funcionarioRepository.listaFuncionarios(instituicaoId);
 
-    if (isDone)
-      return "success";
-    return "error";
+    System.out.println(funcionarios);
+
+    return "redirect:/vacinacoes/requisitar";
   }
 }
